@@ -1,0 +1,141 @@
+#今天老师上课讲了两种方式来控制亮和灭，一种使用控件的visible模块，另一种是backstyle，如下：
+Dim r As Integer
+Dim g As Integer
+Dim y As Integer
+Private Sub form_load()
+Timer1.Enabled = True
+Timer2.Enabled = False
+Timer3.Enabled = False
+green.Visible = True      '为了方便我把三个shape改名成了red，green和yellow
+yellow.Visible = False
+red.Visible = False
+r = 10
+y = 3
+g = 10
+Label1.Caption = g
+g = g - 1
+If g < 0 Then
+Label1.Visible = False
+Label2.Visible = True
+Label3.Visible = False
+Timer1.Enabled = False
+Timer2.Enabled = True
+End If
+End Sub
+Private Sub timer2_timer()
+green.Visible = False
+yellow.Visible = True
+red.Visible = False
+g = 10
+Label2.Caption = y
+y = y - 1
+If y < 0 Then
+Label1.Visible = False
+Label2.Visible = False
+Label3.Visible = True
+Timer2.Enabled = False
+Timer3.Enabled = True
+y = 3
+End If
+End Sub
+Private Sub timer3_timer()
+green.Visible = False
+yellow.Visible = False
+red.Visible = True
+y = 3
+Label3.Caption = r
+r = r - 1
+If r < 0 Then
+Label1.Visible = True
+Label2.Visible = False
+Label3.Visible = False
+Timer1.Enabled = True
+Timer2.Enabled = False
+Timer3.Enabled = False
+r = 10
+End If
+End Sub
+Private Sub timer1_timer()
+green.Visible = True
+yellow.Visible = False
+red.Visible = False
+r = 10
+Label1.Caption = g
+g = g - 1
+If g < 0 Then
+Label1.Visible = False
+Label2.Visible = True
+Label3.Visible = False
+Timer1.Enabled = False
+Timer2.Enabled = True
+Timer3.Enabled = False
+g = 10
+End If
+End Sub
+
+#接着介绍一下backshape的控制方法：
+Dim r As Integer
+Dim g As Integer
+Dim y As Integer
+Private Sub Form_Load()
+r = 10
+g = 10
+y = 13
+Timer1.Enabled = True
+End Sub
+Private Sub Timer1_Timer()
+Label1.Caption = g
+g = g - 1
+green.Visible = True
+green.BackStyle = 1
+If g < 0 Then
+Timer1.Enabled = False
+green.BackStyle = 0
+Timer2.Enabled = True
+Label1.Visible = False
+Label2.Visible = True
+Label3.Visible = False
+g = 10
+End If
+End Sub
+Private Sub Timer2_Timer()
+Label2.Caption = y
+y = y - 1
+yellow.Visible = True
+Shape2.BackStyle = 1
+If y < 0 Then
+Timer2.Enabled = False
+yellow.BackStyle = 0
+Timer3.Enabled = True
+Label1.Visible = False
+Label2.Visible = False
+Label3.Visible = True
+y = 3
+End If
+End Sub
+Private Sub Timer3_Timer()
+Label3.Caption = y
+r = r - 1
+red.Visible = True
+red.BackStyle = 1
+If r < 0 Then
+Timer3.Enabled = False
+red.BackStyle = 0
+Timer1.Enabled = True
+Label1.Visible = True
+Label2.Visible = False
+Label3.Visible = False
+r = 10
+End If
+End Sub
+
+#以上代码直接复制就行了，记住把窗体里面的代码全部清空之后在复制进去哦~
+本节的考点是timer的使用，记得将timer的间隔时间调成1000毫秒，别记错了啊
+还有，初始的时候请将shape的visible全部调成false，否则会出问题的
+（有纰漏勿喷   代码来源：妖王&华子）
+如果想直接下载程序可以访问https://github.com/MorganNotFound/MorganFish.git
+克隆码：gh repo clone MorganNotFound/MorganFish
+更多内容欢迎访问主页https://github.com/MorganNotFound
+
+#PS：Python全安装好的程序下载地址：https://github.com/MorganNotFound/Python_3.8.3_32amd.git
+克隆码：gh repo clone MorganNotFound/Python_3.8.3_32amd
